@@ -11,7 +11,7 @@ document.querySelector('#app').innerHTML = `
   
   <div class="container" id="main-card">
     <img src="${cuteOwlSrc}" alt="Cute Owl" class="cute-img" id="hero-img">
-    <h1 id="question-text">nirali will you be my valentine?</h1>
+    <h1 id="question-text">₭@₺¥@₦! will you be my valentine?</h1>
     
     <div class="buttons" id="btn-container">
       <button class="btn-yes" id="yes-btn">Yes 💖</button>
