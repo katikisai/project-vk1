@@ -112,8 +112,12 @@ button {
 /* Make 'No' button behave strangely */
 .btn-no.running {
   position: absolute;
-  transition: top 0.1s, left 0.1s;
-  /* Fast jump */
+  transition: all 0.2s ease-out;
+  /* Smoother */
+  z-index: 50;
+  /* Ensure on top */
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15);
+  /* Pop out more */
 }
 
 .shy-text {

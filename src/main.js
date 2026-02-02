@@ -63,9 +63,17 @@ const moveNoButton = () => {
   const maxX = containerWidth - btnWidth - margin;
   const maxY = containerHeight - btnHeight - margin;
 
+  // New Logic: Keep it in the bottom half of the card so it stays "near" the buttons/Yes button
+  // and doesn't cover the image
+  const minY = containerHeight / 2;
+
   // Ensure values aren't negative
   const safeX = Math.max(margin, Math.random() * maxX);
-  const safeY = Math.max(margin, Math.random() * maxY);
+
+  // Random Y between middle of card and bottom
+  // Formula: min + (random * (max - min))
+  // Use Math.min to ensure it doesn't exceed maxY even if logic is fuzzy
+  const safeY = Math.min(maxY, minY + (Math.random() * (maxY - minY)));
 
   // 5. Apply absolute positioning relative to the card
   noBtn.style.position = 'absolute';
