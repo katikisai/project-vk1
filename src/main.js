@@ -47,23 +47,30 @@ const moveNoButton = () => {
   const funnyTexts = ["Really?", "Think again!", "Nope!", "Try Yes!", "Cant catch me!", "Too slow!", "Not a chance!", "Pick other one!"];
   noBtn.innerText = funnyTexts[Math.floor(Math.random() * funnyTexts.length)];
 
-  // 2. Get container dimensions
-  const containerRect = mainCard.getBoundingClientRect();
-  const btnRect = noBtn.getBoundingClientRect();
+  // 2. Force a reflow/layout update to ensure we get the correct NEW width of the button
+  // Accessing offsetWidth triggers this.
+  const btnWidth = noBtn.offsetWidth;
+  const btnHeight = noBtn.offsetHeight;
 
-  // 3. Calculate random position within the container bounds
-  // Use Math.max to prevent negative values if button is large
-  const padding = 20;
-  const maxX = Math.max(0, containerRect.width - btnRect.width - padding);
-  const maxY = Math.max(0, containerRect.height - btnRect.height - padding);
+  // 3. Get container dimensions (width/height of the content box + padding)
+  // Since parent is relative, we move within its padding box.
+  const containerWidth = mainCard.offsetWidth;
+  const containerHeight = mainCard.offsetHeight;
 
-  const randomX = Math.random() * maxX;
-  const randomY = Math.random() * maxY;
+  // 4. Calculate SAFE bounds 
+  // We subtract button size AND a safety margin so it doesn't touch edges
+  const margin = 20;
+  const maxX = containerWidth - btnWidth - margin;
+  const maxY = containerHeight - btnHeight - margin;
 
-  // 4. Apply absolute positioning relative to the card
+  // Ensure values aren't negative
+  const safeX = Math.max(margin, Math.random() * maxX);
+  const safeY = Math.max(margin, Math.random() * maxY);
+
+  // 5. Apply absolute positioning relative to the card
   noBtn.style.position = 'absolute';
-  noBtn.style.left = `${randomX}px`;
-  noBtn.style.top = `${randomY}px`;
+  noBtn.style.left = `${safeX}px`;
+  noBtn.style.top = `${safeY}px`;
 
   // Add styling to show it's "running"
   noBtn.classList.add('running');
