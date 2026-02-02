@@ -35,11 +35,17 @@ body {
 
 .container {
   background: var(--color-glass);
-  padding: 4rem 3rem;
+  padding: 4rem;
   border-radius: 2rem;
   box-shadow: var(--shadow-lg);
-  max-width: 600px;
-  width: 100%;
+  max-width: 800px;
+  width: 90vw;
+  min-height: 500px;
+  /* Give it space to move vertically too */
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
   position: relative;
   z-index: 10;
   transition: transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
