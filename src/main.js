@@ -11,7 +11,7 @@ document.querySelector('#app').innerHTML = `
   
   <div class="container" id="main-card">
     <img src="${cuteOwlSrc}" alt="Cute Owl" class="cute-img" id="hero-img">
-    <h1 id="question-text">kalyani will you be my valentine?</h1>
+    <h1 id="question-text">nirali will you be my valentine?</h1>
     
     <div class="buttons" id="btn-container">
       <button class="btn-yes" id="yes-btn">Yes 💖</button>
@@ -22,7 +22,7 @@ document.querySelector('#app').innerHTML = `
 
     <!-- Success Message (Hidden Initiall) -->
     <div class="success-message" id="success-msg">
-      <h1>YAYYY! 🎉💖</h1>
+      <h1>YAYYYY! 🎉💖</h1>
       <p>Best Decision Ever!</p>
     </div>
   </div>
@@ -89,7 +89,7 @@ yesBtn.addEventListener('click', () => {
   // Hide noBtn explicitly because it might have been reparented
   noBtn.style.display = 'none';
 
-  questionText.innerText = "YAYYY! I knew it! 💖";
+  questionText.innerText = "YAY! 🎉";
   shyText.style.display = 'none';
 
   // Change Image to something celebrating
