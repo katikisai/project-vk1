@@ -41,8 +41,13 @@ const successMsg = document.getElementById('success-msg');
 // State
 let noBtnMoved = false;
 
-// 1. "No" Button Logic (Runaway)
 const moveNoButton = () => {
+  // CRITICAL FIX: Move button to the main card so its coordinates are relative to the BIG CARD,
+  // not the small buttons container.
+  if (noBtn.parentElement !== mainCard) {
+    mainCard.appendChild(noBtn);
+  }
+
   // Get container dimensions
   // SUPER SAFE ZONES
   // Keep strictly away from edges (max 60%) to avoid rounded corners cutting it off
