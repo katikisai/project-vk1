@@ -43,45 +43,29 @@ let noBtnMoved = false;
 
 // 1. "No" Button Logic (Runaway)
 const moveNoButton = () => {
-  // 1. Update text for fun FIRST
-  const funnyTexts = ["Really?", "Think again!", "Nope!", "Try Yes!", "Cant catch me!", "Too slow!", "Not a chance!", "Pick other one!"];
-  noBtn.innerText = funnyTexts[Math.floor(Math.random() * funnyTexts.length)];
+  // Get container dimensions
+  const containerRect = mainCard.getBoundingClientRect();
+  const btnRect = noBtn.getBoundingClientRect();
 
-  // 2. Force a reflow/layout update to ensure we get the correct NEW width of the button
-  // Accessing offsetWidth triggers this.
-  const btnWidth = noBtn.offsetWidth;
-  const btnHeight = noBtn.offsetHeight;
+  // Calculate random position within the container bounds
+  // We want to keep it somewhat inside the card so it doesn't disappear completely
+  const maxX = containerRect.width - btnRect.width - 40;
+  const maxY = containerRect.height - btnRect.height - 40;
 
-  // 3. Get container dimensions (width/height of the content box + padding)
-  // Since parent is relative, we move within its padding box.
-  const containerWidth = mainCard.offsetWidth;
-  const containerHeight = mainCard.offsetHeight;
+  const randomX = Math.random() * maxX;
+  const randomY = Math.random() * maxY;
 
-  // 4. Calculate SAFE bounds 
-  // We subtract button size AND a safety margin so it doesn't touch edges
-  const margin = 20;
-  const maxX = containerWidth - btnWidth - margin;
-  const maxY = containerHeight - btnHeight - margin;
-
-  // New Logic: Keep it in the bottom half of the card so it stays "near" the buttons/Yes button
-  // and doesn't cover the image
-  const minY = containerHeight / 2;
-
-  // Ensure values aren't negative
-  const safeX = Math.max(margin, Math.random() * maxX);
-
-  // Random Y between middle of card and bottom
-  // Formula: min + (random * (max - min))
-  // Use Math.min to ensure it doesn't exceed maxY even if logic is fuzzy
-  const safeY = Math.min(maxY, minY + (Math.random() * (maxY - minY)));
-
-  // 5. Apply absolute positioning relative to the card
+  // Apply absolute positioning
   noBtn.style.position = 'absolute';
-  noBtn.style.left = `${safeX}px`;
-  noBtn.style.top = `${safeY}px`;
+  noBtn.style.left = `${randomX}px`;
+  noBtn.style.top = `${randomY}px`;
 
   // Add styling to show it's "running"
   noBtn.classList.add('running');
+
+  // Update text for fun
+  const funnyTexts = ["Really?", "Think again!", "Nope!", "Try Yes!", "Cant catch me!"];
+  noBtn.innerText = funnyTexts[Math.floor(Math.random() * funnyTexts.length)];
 };
 
 // Events for "No" button
