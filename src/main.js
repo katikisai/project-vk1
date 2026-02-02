@@ -89,12 +89,17 @@ yesBtn.addEventListener('click', () => {
   // Hide noBtn explicitly because it might have been reparented
   noBtn.style.display = 'none';
 
-  questionText.innerText = "YAY! 🎉";
+  questionText.innerText = "YAYYYY! 🎉💖";
   shyText.style.display = 'none';
 
   // Change Image to something celebrating
-  // Using local success gif for reliability
+  // 1. Update src
   heroImg.src = "/success.gif";
+  // 2. Change class to large square version
+  heroImg.classList.remove('cute-img');
+  heroImg.classList.add('success-img');
+  // 3. Move image BELOW the text
+  mainCard.appendChild(heroImg);
 
   // Trigger Confetti
   if (window.confetti) {

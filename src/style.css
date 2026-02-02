@@ -68,6 +68,17 @@ body {
   animation: float 3s ease-in-out infinite;
 }
 
+.success-img {
+  width: 100%;
+  max-width: 450px;
+  aspect-ratio: 1/1;
+  object-fit: cover;
+  border-radius: 1.5rem;
+  margin-top: 1rem;
+  box-shadow: 0 15px 40px rgba(0, 0, 0, 0.2);
+  border: 4px solid white;
+}
+
 h1 {
   font-size: 2rem;
   font-weight: 800;
