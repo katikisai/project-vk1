@@ -86,12 +86,14 @@ noBtn.addEventListener('click', moveNoButton); // In case mobile user taps it
 yesBtn.addEventListener('click', () => {
   // Hide buttons and question
   btnContainer.style.display = 'none';
+  // Hide noBtn explicitly because it might have been reparented
+  noBtn.style.display = 'none';
+
   questionText.innerText = "YAYYY! I knew it! 💖";
   shyText.style.display = 'none';
 
   // Change Image to something celebrating
-  // Using a "Happy dance" gif
-  heroImg.src = "https://media.giphy.com/media/T86i6yDyOYz7j6fou2/giphy.gif";
+  heroImg.src = "https://media.tenor.com/m/8JzX5Kk5WwAAAAAC/bubu-dudu-kiss.gif";
 
   // Trigger Confetti
   if (window.confetti) {
