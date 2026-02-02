@@ -2,7 +2,7 @@ import './style.css';
 
 // Using a cute Owl emoji/SVG as the source for simplicity
 // Could also use a GIF URL like 'https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExM2Q...'
-const cuteOwlSrc = "https://media1.tenor.com/m/nZkX5C3i5WEAAAAC/bubu-dudu-sseeyall.gif";
+const cuteOwlSrc = "/cute.gif";
 // Or a fallback if that link breaks:
 // const cuteOwlSrc = "https://media.tenor.com25/25/sticker-cute.gif"
 
