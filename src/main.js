@@ -18,7 +18,7 @@ document.querySelector('#app').innerHTML = `
       <button class="btn-no" id="no-btn">No</button>
     </div>
     
-    <p class="shy-text" id="shy-text">"No" seems a bit shy 😈</p>
+    <p class="shy-text" id="shy-text">Try saying "No" 😈</p>
 
     <!-- Success Message (Hidden Initiall) -->
     <div class="success-message" id="success-msg">

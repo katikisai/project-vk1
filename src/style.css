@@ -35,10 +35,10 @@ body {
 
 .container {
   background: var(--color-glass);
-  padding: 3rem 2rem;
+  padding: 4rem 3rem;
   border-radius: 2rem;
   box-shadow: var(--shadow-lg);
-  max-width: 500px;
+  max-width: 600px;
   width: 100%;
   position: relative;
   z-index: 10;
