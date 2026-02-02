@@ -43,29 +43,30 @@ let noBtnMoved = false;
 
 // 1. "No" Button Logic (Runaway)
 const moveNoButton = () => {
-  // Get container dimensions
+  // 1. Update text for fun FIRST
+  const funnyTexts = ["Really?", "Think again!", "Nope!", "Try Yes!", "Cant catch me!", "Too slow!", "Not a chance!", "Pick other one!"];
+  noBtn.innerText = funnyTexts[Math.floor(Math.random() * funnyTexts.length)];
+
+  // 2. Get container dimensions
   const containerRect = mainCard.getBoundingClientRect();
   const btnRect = noBtn.getBoundingClientRect();
 
-  // Calculate random position within the container bounds
-  // We want to keep it somewhat inside the card so it doesn't disappear completely
-  const maxX = containerRect.width - btnRect.width - 40;
-  const maxY = containerRect.height - btnRect.height - 40;
+  // 3. Calculate random position within the container bounds
+  // Use Math.max to prevent negative values if button is large
+  const padding = 20;
+  const maxX = Math.max(0, containerRect.width - btnRect.width - padding);
+  const maxY = Math.max(0, containerRect.height - btnRect.height - padding);
 
   const randomX = Math.random() * maxX;
   const randomY = Math.random() * maxY;
 
-  // Apply absolute positioning
+  // 4. Apply absolute positioning relative to the card
   noBtn.style.position = 'absolute';
   noBtn.style.left = `${randomX}px`;
   noBtn.style.top = `${randomY}px`;
 
   // Add styling to show it's "running"
   noBtn.classList.add('running');
-
-  // Update text for fun
-  const funnyTexts = ["Really?", "Think again!", "Nope!", "Try Yes!", "Cant catch me!"];
-  noBtn.innerText = funnyTexts[Math.floor(Math.random() * funnyTexts.length)];
 };
 
 // Events for "No" button
