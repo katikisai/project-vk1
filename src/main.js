@@ -93,7 +93,8 @@ yesBtn.addEventListener('click', () => {
   shyText.style.display = 'none';
 
   // Change Image to something celebrating
-  heroImg.src = "https://media.tenor.com/m/8JzX5Kk5WwAAAAAC/bubu-dudu-kiss.gif";
+  // Using local success gif for reliability
+  heroImg.src = "/success.gif";
 
   // Trigger Confetti
   if (window.confetti) {
