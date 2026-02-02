@@ -47,10 +47,13 @@ const moveNoButton = () => {
   const containerRect = mainCard.getBoundingClientRect();
   const btnRect = noBtn.getBoundingClientRect();
 
-  // Pure Chaos Mode (No specific math constraints)
-  // Just use container size minus a safety buffer
-  const randomX = Math.random() * (mainCard.offsetWidth - 150);
-  const randomY = Math.random() * (mainCard.offsetHeight - 150);
+  // Pure Chaos Mode - But SAFER
+  // Only use 85% of the container's width/height to ensure it stays well inside
+  const safeWidth = mainCard.clientWidth * 0.85;
+  const safeHeight = mainCard.clientHeight * 0.85;
+
+  const randomX = Math.random() * safeWidth;
+  const randomY = Math.random() * safeHeight;
 
   // Apply absolute positioning
   noBtn.style.position = 'absolute';
