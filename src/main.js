@@ -44,13 +44,13 @@ let noBtnMoved = false;
 // 1. "No" Button Logic (Runaway)
 const moveNoButton = () => {
   // Get container dimensions
-  // SAFE ZONES Strategy
-  // Define grid spots (percentage of container)
+  // SUPER SAFE ZONES
+  // Keep strictly away from edges (max 60%) to avoid rounded corners cutting it off
   const safeZones = [
-    { x: 10, y: 10 }, { x: 80, y: 10 },
-    { x: 10, y: 80 }, { x: 80, y: 80 },
-    { x: 40, y: 40 }, { x: 40, y: 10 },
-    { x: 10, y: 40 }, { x: 60, y: 70 }
+    { x: 5, y: 5 }, { x: 60, y: 5 },
+    { x: 5, y: 60 }, { x: 60, y: 60 },
+    { x: 30, y: 30 }, { x: 40, y: 10 },
+    { x: 10, y: 40 }, { x: 50, y: 50 }
   ];
 
   // Pick a random zone
