@@ -89,7 +89,7 @@ yesBtn.addEventListener('click', () => {
   // Hide noBtn explicitly because it might have been reparented
   noBtn.style.display = 'none';
 
-  questionText.innerText = "YAYYYY! 🎉💖";
+  questionText.innerText = "YAYYYY! 🎉💖 ₭@₺¥@₦! will be my valentine!";
   shyText.style.display = 'none';
 
   // Change Image to something celebrating
