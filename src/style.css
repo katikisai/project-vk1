@@ -38,9 +38,9 @@ body {
   padding: 4rem;
   border-radius: 2rem;
   box-shadow: var(--shadow-lg);
-  max-width: 800px;
-  width: 90vw;
-  min-height: 500px;
+  max-width: 1500px;
+  width: 150%;
+  min-height: 1000px;
   /* Give it space to move vertically too */
   display: flex;
   flex-direction: column;

@@ -47,13 +47,10 @@ const moveNoButton = () => {
   const containerRect = mainCard.getBoundingClientRect();
   const btnRect = noBtn.getBoundingClientRect();
 
-  // Calculate random position within the container bounds
-  // We want to keep it somewhat inside the card so it doesn't disappear completely
-  const maxX = containerRect.width - btnRect.width - 40;
-  const maxY = containerRect.height - btnRect.height - 40;
-
-  const randomX = Math.random() * maxX;
-  const randomY = Math.random() * maxY;
+  // Pure Chaos Mode (No specific math constraints)
+  // Just use container size minus a safety buffer
+  const randomX = Math.random() * (mainCard.offsetWidth - 150);
+  const randomY = Math.random() * (mainCard.offsetHeight - 150);
 
   // Apply absolute positioning
   noBtn.style.position = 'absolute';
