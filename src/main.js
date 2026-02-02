@@ -44,21 +44,26 @@ let noBtnMoved = false;
 // 1. "No" Button Logic (Runaway)
 const moveNoButton = () => {
   // Get container dimensions
-  const containerRect = mainCard.getBoundingClientRect();
-  const btnRect = noBtn.getBoundingClientRect();
+  // SAFE ZONES Strategy
+  // Define grid spots (percentage of container)
+  const safeZones = [
+    { x: 10, y: 10 }, { x: 80, y: 10 },
+    { x: 10, y: 80 }, { x: 80, y: 80 },
+    { x: 40, y: 40 }, { x: 40, y: 10 },
+    { x: 10, y: 40 }, { x: 60, y: 70 }
+  ];
 
-  // Pure Chaos Mode - But SAFER
-  // Only use 85% of the container's width/height to ensure it stays well inside
-  const safeWidth = mainCard.clientWidth * 0.85;
-  const safeHeight = mainCard.clientHeight * 0.85;
+  // Pick a random zone
+  const randomZone = safeZones[Math.floor(Math.random() * safeZones.length)];
 
-  const randomX = Math.random() * safeWidth;
-  const randomY = Math.random() * safeHeight;
+  // Convert % to pixels
+  const newX = (mainCard.clientWidth * randomZone.x) / 100;
+  const newY = (mainCard.clientHeight * randomZone.y) / 100;
 
   // Apply absolute positioning
   noBtn.style.position = 'absolute';
-  noBtn.style.left = `${randomX}px`;
-  noBtn.style.top = `${randomY}px`;
+  noBtn.style.left = `${newX}px`;
+  noBtn.style.top = `${newY}px`;
 
   // Add styling to show it's "running"
   noBtn.classList.add('running');

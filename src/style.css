@@ -41,7 +41,6 @@ body {
   max-width: 1000px;
   width: 100%;
   min-height: 500px;
-  /* Give it space to move vertically too */
   display: flex;
   flex-direction: column;
   justify-content: center;
