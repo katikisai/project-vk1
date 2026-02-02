@@ -43,32 +43,27 @@ let noBtnMoved = false;
 
 // 1. "No" Button Logic (Runaway)
 const moveNoButton = () => {
-  // 1. Get updated dimensions
-  const containerWidth = mainCard.offsetWidth;
-  const containerHeight = mainCard.offsetHeight;
-  const btnWidth = noBtn.offsetWidth;
-  const btnHeight = noBtn.offsetHeight;
+  // Get container dimensions
+  const containerRect = mainCard.getBoundingClientRect();
+  const btnRect = noBtn.getBoundingClientRect();
 
-  // 2. Calculate SAFE bounds (padding of 30px)
-  const margin = 30;
-  const maxX = containerWidth - btnWidth - margin;
-  const maxY = containerHeight - btnHeight - margin;
+  // Calculate random position within the container bounds
+  // We want to keep it somewhat inside the card so it doesn't disappear completely
+  const maxX = containerRect.width - btnRect.width - 40;
+  const maxY = containerRect.height - btnRect.height - 40;
 
-  // 3. Generate random coordinates
-  // Use Math.max(margin, ...) to ensure we don't go negative or touch the top-left edge
-  // Also ensure maxX/maxY are at least margin size
-  const safeMaxX = Math.max(margin, maxX);
-  const safeMaxY = Math.max(margin, maxY);
+  const randomX = Math.random() * maxX;
+  const randomY = Math.random() * maxY;
 
-  const randomX = Math.random() * (safeMaxX - margin) + margin; // Min is margin
-  const randomY = Math.random() * (safeMaxY - margin) + margin;
-
-  // 4. Force absolute position and apply coordinates
+  // Apply absolute positioning
   noBtn.style.position = 'absolute';
   noBtn.style.left = `${randomX}px`;
   noBtn.style.top = `${randomY}px`;
 
-  // 5. Update text for fun
+  // Add styling to show it's "running"
+  noBtn.classList.add('running');
+
+  // Update text for fun
   const funnyTexts = ["Really?", "Think again!", "Nope!", "Try Yes!", "Cant catch me!"];
   noBtn.innerText = funnyTexts[Math.floor(Math.random() * funnyTexts.length)];
 };
